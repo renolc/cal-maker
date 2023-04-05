@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Cal Maker</title>
+  </head>
+  <body>
+    <div id="setup">
+      <div
+        id="drop-zone"
+        ondrop="fileDropped(event)"
+        ondragover="preventDefault(event)"
+      >
+        drop csv file here
+      </div>
+      <div class="options">
+        Include Holidays
+        <input id="includeHolidays" type="checkbox" checked />
+        <br />
+        Year
+        <select id="year"></select>
+      </div>
+    </div>
+
+    <template id="month-template">
+      <div class="month">
+        <div class="month-name"></div>
+        <div class="week-days">
+          <div>Sunday</div>
+          <div>Monday</div>
+          <div>Tuesday</div>
+          <div>Wednesday</div>
+          <div>Thursday</div>
+          <div>Friday</div>
+          <div>Saturday</div>
+        </div>
+        <div class="weeks"></div>
+      </div>
+    </template>
+
+    <template id="week-row-template">
+      <div class="week-row">
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+      </div>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
