@@ -18,14 +18,25 @@ const preFillHolidays = year => {
   data[0] = { 1: ["New Year's Day"] }
   data[1] = { 14: ["Valentine's Day"] }
   data[2] = { 17: ["Saint Patrick's Day"] }
+  data[5] = { 19: ['Juneteenth'] }
   data[6] = { 4: ['Independence Day'] }
   data[9] = { 31: ['Halloween'] }
-  data[11] = { 24: ['Christmas Eve'], 25: ['Christmas Day'] }
+  data[10] = { 11: ['Veterans Day'] }
+  data[11] = {
+    24: ['Christmas Eve'],
+    25: ['Christmas Day'],
+    31: ["Near Year's Eve"]
+  }
 
+  addFloatingHoliday(data, year, 3, 1, 0, 'MLK Day')
+  addFloatingHoliday(data, year, 3, 1, 1, "Presidents' Day")
   addFloatingHoliday(data, year, 2, 0, 4, "Mother's Day")
   addFloatingHoliday(data, year, 3, 0, 5, "Father's Day")
+  addFloatingHoliday(data, year, 1, 1, 8, 'Labor Day')
+  addFloatingHoliday(data, year, 2, 1, 9, "Indigenous Peoples' Day")
   addFloatingHoliday(data, year, 4, 4, 10, 'Thanksgiving')
   addEaster(data, year)
+  addMemorialDay(data, year)
 }
 
 const addFloatingHoliday = (holidays, year, num, dayOfWeek, month, title) => {
@@ -54,6 +65,15 @@ const addEaster = (holidays, year) => {
   if (!holidays[month]) holidays[month] = {}
   if (!holidays[month][day]) holidays[month][day] = []
   holidays[month][day].push('Easter')
+}
+
+const addMemorialDay = (holidays, year) => {
+  const day = new Date(year, 5, 0)
+  while (day.getDay() !== 1) day.setDate(day.getDate() - 1)
+  const date = day.getDate()
+  if (!holidays[4]) holidays[4] = {}
+  if (!holidays[4][date]) holidays[4][date] = []
+  holidays[4][date].push('Memorial Day')
 }
 
 const preventDefault = e => e.preventDefault()
