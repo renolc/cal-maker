@@ -1,6 +1,6 @@
 const data = {}
 
-const init = () => {
+const populateYearSelect = () => {
   const yearSelect = document.querySelector('#year')
   const thisYear = new Date().getFullYear()
 
@@ -12,7 +12,7 @@ const init = () => {
   }
 }
 
-init()
+populateYearSelect()
 
 const preFillHolidays = year => {
   data[0] = { 1: ["New Year's Day"] }
@@ -75,8 +75,6 @@ const addMemorialDay = (holidays, year) => {
   if (!holidays[4][date]) holidays[4][date] = []
   holidays[4][date].push('Memorial Day')
 }
-
-const preventDefault = e => e.preventDefault()
 
 const fileDropped = async e => {
   e.preventDefault()
